@@ -16,4 +16,5 @@
   {%- if social.microdotblog -%}<li><a rel="me" href="https://micro.blog/{{ social.microdotblog | cgi_escape | escape }}" title="{{ social.microdotblog | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#microdotblog' | relative_url }}"></use></svg></a></li>{%- endif -%}
   {%- if social.googleplus -%}<li><a href="https://plus.google.com/{{ social.googleplus | escape }}" title="{{ social.googleplus | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#googleplus' | relative_url }}"></use></svg></a></li>{%- endif -%}
   {%- if social.rss -%}<li><a href="{{ 'feed.xml' | relative_url }}" title="{{ social.rss | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#rss' | relative_url }}"></use></svg></a></li>{%- endif -%}
+  {%- if social.stackoverflow -%}<li><a href="https://stackoverflow.com/users/{{ social.stackoverflow | cgi_escape | escape }}" title="{{ social.stackoverflow_alt | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#stackoverflow' | relative_url }}"></use></svg></a></li>{%- endif -%}
 </ul>
