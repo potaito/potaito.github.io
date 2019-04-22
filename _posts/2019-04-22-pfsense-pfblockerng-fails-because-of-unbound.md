@@ -1,17 +1,15 @@
 ---
 layout: post
-title:  "pfblockerNG DNSBL failing"
+title:  "pfBlockerNG DNSBL failing to load"
 date:   2019-04-22 17:00:00 +0100
 categories: pfsense pfblockerng
 ---
 
 *Running pfSense version 2.4.4 and pfBlockerNG v2.2.5_22.*
 
-I tried setting up pfBlockerNG on my pfSense router. The IP-based blocking worked fine. It is fairly straight forward as it adds a firewall rule that drops packets to and from "bad" IP addresses. What I had trouble with though was the DNS Blocker `DNSBL` which is part of pfBlockerNG. In particular when I forced a reload of pfBlockerNG, it would fail to reload `unbound`, which is the DNS Resolver service on pfSense. 
+I wanted to setup pfBlockerNG on my pfSense router, which consists of two parts: IP blocking and DNS "black-holing". The IP-based blocking worked fine out of the box. Its concept is fairly straight forward as it adds a firewall rule that drops packets to and from "bad" IP addresses. These addresses are found online in curated lists. What I had trouble with though was the DNS Blocker `DNSBL`, the other half of pfBlockerNG. In particular when I forced a reload of pfBlockerNG, it would fail to reload `unbound`, which is the DNS Resolver service on pfSense. `DNSBL` relies on `unbound` in the sense that it adds itself to `unbound` and then handles specific DNS request that are black-listed. The following is an excerpt of the pfBlockerNG log during the reload process:
 
 ```
-Saving DNSBL database... completed
-
 ------------------------------------------------------------------------
 Assembling DNSBL database... completed [ 04/22/19 17:35:28 ]
 Reloading Unbound Resolver..
@@ -20,8 +18,9 @@ DNSBL enabled FAIL - restoring Unbound conf *** Fix error(s) and a Force Reload 
 [1555947478] unbound-control[76777:0] error: connect: Operation timed out for 127.0.0.1 port 8953 Restore previous database Failed! ..... Not completed. [ 04/22/19 17:40:29 ]
 ```
 
+So apparently pfBlockerNG tries to restart the `unbound` service, but fails doing so because of the error  "*control-enable is 'no' in the config file*". By the way: In older versions of pfBlockerNG it would only print that it failed to reload `unbound` without further explanation.
 
-`DNSBL` relies on `unbound` in the sense that it adds itself to `unbound` and then handles specific DNS request that are black-listed. When searching for the "control-enable is 'no'" error, I stumbled upon a forum entry here https://forum.netgate.com/topic/142446/should-unbound-control-work-by-default, where it's explained that apparently `unbound` has an issue with a 0-byte config file. I checked and sure enough the file `remotecontrol.conf` existed but was empty:
+When searching for "*control-enable is 'no'*" online, I stumbled upon a [netgate forum entry](https://forum.netgate.com/topic/142446/should-unbound-control-work-by-default), where user **jimp** explains that apparently `unbound` has an issue with a 0-byte config file. I checked on my device and sure enough the file `remotecontrol.conf` existed but was empty:
 
 ```shell
 [2.4.4-RELEASE][alessandro@pfSense.lan]/var/unbound: ls -lah
@@ -46,11 +45,15 @@ drwxr-xr-x   2 unbound  unbound   512B Dec 12 13:42 conf.d
 -rw-r-----   1 unbound  unbound     0B Dec 10  2017 unbound_server.pem
 ```
 
-So here's what resolved the problem:
+It took the following steps to resolve the problem:
 0. Stop the `unbound` service via GUI.
-1. Delete the empty file with `rm /var/unbound/remotecontrol.conf`. In my case the key files were also empty, so these needed to be removed as well. Otherwise `unbound` would not restart later: `rm /var/unbound/unbound_*`.
-2. Back in the GUI, go to the "DNS Resolver" settings and simply save them. This shold re-generate `remotecontrol.conf`. 
-3. Restart the `unbound` service via GUI. Checking the files in the shell and this time they were all larger than 0 bytes:
+1. Delete the empty files. In my case the key files `unbound_control.key` etc. were also empty, so these needed to be removed as well. Otherwise `unbound` would not start:
+    ```shell
+    rm /var/unbound/remotecontrol.conf
+    rm /var/unbound/unbound_*
+    ```
+2. Back in the GUI and in the "DNS Resolver" service settings: Simply hit "save" without making any modifications. This should regenerate the files that were deleted before. 
+3. Restart the `unbound` service via GUI. Checking the `/var/unbound` directory afterwards shows that the deleted files were all restored and this time larger than 0 bytes:
     ```
     [2.4.4-RELEASE][root@pfSense.lan]/var/unbound: ls -la
     total 60
@@ -74,7 +77,7 @@ So here's what resolved the problem:
     -rw-r-----   1 unbound  unbound  1318 Apr 22 18:19 unbound_server.pem
     ```
 
-4. Once `unbound` is happy again, reload pfBlockerNG in its update tab. This time `rebound` was reloaded without any issues:
+4. Now that `unbound` is happy again, go to pfBlockerNG's update tab and force a reload. This time `unbound` started without any issues:
     ```
     ------------------------------------------------------------------------
     Assembling DNSBL database... completed [ 04/22/19 18:22:04 ]
@@ -82,6 +85,8 @@ So here's what resolved the problem:
     DNSBL update [ 141195 | PASSED  ]... completed
     ------------------------------------------------------------------------
     ```
+
+## Testing
 
 By default pfBlockerNG has easylists that block some of the most common trackers and malicious URLs. One of the lists loaded is this one: https://easylist-downloads.adblockplus.org/easyprivacy.txt. As a final test, we can form a DNS query for a domain that appears in this list and should thus be black-holed. 
 
@@ -109,4 +114,6 @@ google-analytics.com.	60	IN	A	10.10.10.1
 ;; MSG SIZE  rcvd: 65
 ```
 
-As can be seen, `dig` returns the IP address `10.10.10.1` for this particular domain, which is not the correct address. Therefore requests to this domain would would end up in the void, which is good. Note that with `dig @<ip>` it is possible to query a specific DNS server, in this case the router running pfSense. Without this extra argument, the local machine's DNS proxy like `dnsmasq` might return a cached answer. Likewise a test with the `ping` command as suggested in some tutorials can give wrong results for the same reasons. 
+As can be seen, `dig` returns the IP address `10.10.10.1` for this particular domain, which is not the correct address. Therefore any HTTP(S) request to this domain would would end up in the void, which is good. 
+
+A note about `dig`: With `dig @<ip>` it is possible to query a specific DNS server with a name resolution request. In this case the device running pfSense is what we want to test. Without the extra `@` argument, the local machine's (Ubuntu or whatever you are on) DNS proxy like `dnsmasq` might return a cached answer for the domain. Likewise a test with the `ping` command as suggested in some tutorials can give wrong results for the same reasons.
