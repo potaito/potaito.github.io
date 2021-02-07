@@ -1,18 +1,13 @@
 ---
 layout: default_dark
 ---
-<section class="row">
+<section>
 {% for post in paginator.posts %}
-
-  <div class="col-md-4 pb-5">
-  {% include post_card.html post=post %}
-  </div>
-
-{% assign var = forloop.index | modulo: 3 %}
-{% if var == 0 %}
-</section>
-<section class="row">
-{% endif %}
+  <!-- <div class="row"> -->
+    <article class="mt-5">
+      <a href="{{ post.url }}"><h3 class="text-white">{{ post.title }}</h5></a>
+    </article>
+  <!-- </div> -->
 {% endfor %}
 </section>
 

@@ -5,7 +5,7 @@ tagline: Recipe journal from Kaja and Alessandro
 description: > # this means to ignore newlines until "show_exerpts:"
   Engineer, roboticist and technology enthusiast.
 url: potaito.github.io/
-paginate: 20  # Posts per page
+paginate: 4  # Posts per page
 timezone: Europe/Zurich  # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 show_excerpts: false # set to true to show excerpts on the homepage
