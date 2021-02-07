@@ -1,53 +1,89 @@
+# Site settings
 title: Potaito's shed
-author: Potaito
-# email: your-email@domain.com
 description: > # this means to ignore newlines until "show_exerpts:"
   Engineer, roboticist and technology enthusiast.
+lang: en-US # default lang
+timezone: Europe/Zurich
+image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
+repo: https://github.com/piharpi/jekyll-klise # site repo [optional]
+mode: dark # default theme "dark" | "light"
 
-show_excerpts: false # set to true to show excerpts on the homepage
+# Profile settings
+author:
+  name: Potaito
+  # bio:
+  # username: username # general username
+  # github: github_username # github username
+  # twitter: twitter_username # twitter username
+  # facebook: facebook_username # facebook username
+  # email: your-email@email.com # email adress
+  # avatar: /assets/img/avatar.jpg # change with your own avatar
 
-# Minima date format
-# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
-minima:
-  date_format: "%b %-d, %Y"
+# URL settings
+url: "https://potaito.github.io" #
+baseurl:
+permalink: /:title/
+google_analytics: # leave it blank if not wish
+fb_appid:
 
-  # generate social links in footer
-  social_links:
-    # twitter: jekyllrb
-    github:  potaito
-    rss: rss
-    # dribbble: jekyll
-    # facebook: jekyll
-    # flickr:   jekyll
-    # instagram: jekyll
-    # linkedin: jekyll
-    # pinterest: jekyll
-    # youtube: jekyll
-    # youtube_channel: UC8CXR0-3I70i1tfPg1PAE1g
-    # youtube_channel_name: CloudCannon
-    # telegram: jekyll
-    # googleplus: +jekyll
-    # microdotblog: jekyll
+# Collection setting
+collections:
+  posts:
+    output: true
 
-    # Mastodon instances
-    # mastodon:
-    # - username: jekyll
-    #   instance: example.com
-    # - username: jekyll2
-    #   instance: example.com
+# Markdown settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
 
-# If you want to link only specific pages in your header, uncomment
-# this and add the path to the pages in order as they should show up
-#header_pages:
-# - about.md
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: post
+      comments: false
+
+# Jekyll Compose default front matter
+jekyll_compose:
+  post_default_front_matter:
+    modified:
+    tags: []
+    description:
+  draft_default_front_matter:
+    modified:
+    tags: []
+    description:
+
+# Homepage limit posts
+number_of_posts: 15
 
 # Build settings
-markdown: kramdown
-theme: minima
+# theme: klise
+sass:
+  style: compressed
 
-plugins:
- - jekyll-feed
- - jekyll-seo-tag
+include:
+  - _redirects
+  - .htaccess
 
 exclude:
-  - History.markdown
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - CHANGELOG.md
+  - README.md
+  - node_modules
+  - CODE_OF_CONDUCT.md
+  - CONTRIBUTING.md
+  - lighthouse.png
+  - klise-*.gem
+  - klise.gemspec
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-postfiles
