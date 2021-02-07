@@ -1,20 +1,47 @@
-{%- assign social = site.minima.social_links -%}
-
-<ul class="social-media-list">
-  {%- if social.dribbble -%}<li><a href="https://dribbble.com/{{ social.dribbble | cgi_escape | escape }}" title="{{ social.dribbble | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#dribbble' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.facebook -%}<li><a href="https://www.facebook.com/{{ social.facebook | cgi_escape | escape }}" title="{{ social.facebook | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#facebook' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.flickr -%}<li><a href="https://www.flickr.com/photos/{{ social.flickr | cgi_escape | escape }}" title="{{ social.flickr | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#flickr' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.github -%}<li><a href="https://github.com/{{ social.github | cgi_escape | escape }}" title="{{ social.github | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.instagram -%}<li><a href="https://www.instagram.com/{{ social.instagram | cgi_escape | escape }}" title="{{ social.instagram | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#instagram' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.linkedin -%}<li><a href="https://www.linkedin.com/in/{{ social.linkedin | cgi_escape | escape }}" title="{{ social.linkedin | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.pinterest -%}<li><a href="https://www.pinterest.com/{{ social.pinterest | cgi_escape | escape }}" title="{{ social.pinterest | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#pinterest' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- for mst in social.mastodon -%}{%- if mst.username and mst.instance -%}<li><a rel="me" href="https://{{ mst.instance | cgi_escape | escape}}/@{{mst.username}}" title="{{ mst.username | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#mastodon' | relative_url }}"></use></svg></a></li>{%- endif -%}{%- endfor -%}
-  {%- if social.twitter -%}<li><a href="https://twitter.com/{{ social.twitter | cgi_escape | escape }}" title="{{ social.twitter | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.youtube -%}<li><a href="https://www.youtube.com/{{ social.youtube | cgi_escape | escape }}" title="{{ social.youtube | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#youtube' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.youtube_channel -%}<li><a href="https://www.youtube.com/channel/{{ social.youtube_channel | cgi_escape | escape }}" title="{{ social.youtube_channel_name | escape | default: 'YouTube' }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#youtube' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.telegram -%}<li><a href="https://t.me/{{ social.telegram | cgi_escape | escape }}" title="{{ social.telegram | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#telegram' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.microdotblog -%}<li><a rel="me" href="https://micro.blog/{{ social.microdotblog | cgi_escape | escape }}" title="{{ social.microdotblog | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#microdotblog' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.googleplus -%}<li><a href="https://plus.google.com/{{ social.googleplus | escape }}" title="{{ social.googleplus | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#googleplus' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.rss -%}<li><a href="{{ 'feed.xml' | relative_url }}" title="{{ social.rss | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#rss' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if social.stackoverflow -%}<li><a href="https://stackoverflow.com/users/{{ social.stackoverflow | cgi_escape | escape }}" title="{{ social.stackoverflow_alt | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#stackoverflow' | relative_url }}"></use></svg></a></li>{%- endif -%}
-</ul>
+<ul class="nav justify-content-center text-center">
+    {% if site.social_links.instagram %}
+    <li class="nav-item">
+        <a class="nav-link text-white" href="https://www.instagram.com/{{ site.social_links.instagram | cgi_escape | escape }}/" title="{{ site.social_links.instagram | escape }}"><i class="fab fa-instagram fa-1x"></i></a>
+    </li>
+    {% endif %}
+    {% if site.social_links.twitter %}
+    <li class="nav-item">
+        <a class="nav-link text-white" href="https://twitter.com/{{ site.social_links.twitter | cgi_escape | escape }}" title="{{ site.social_links.twitter | escape }}"><i class="fab fa-twitter fa-1x"></i></a>
+    </li>
+    {% endif %}
+    {% if site.social_links.youtube %}
+    <li class="nav-item">
+        <a class="nav-link text-white" href="https://www.youtube.com/{{ site.social_links.youtube | cgi_escape | escape }}" title="{{ site.social_links.youtube | escape }}"><i class="fab fa-youtube fa-1x"></i></a>
+    </li>
+    {% endif %}
+    {% if site.social_links.youtube_channel %}
+    <li class="nav-item">
+        <a class="nav-link text-white" href="https://www.youtube.com/channel/{{ site.social_links.youtube_channel | cgi_escape | escape }}" title="{{ site.social_links.youtube_channel_name | escape | default: 'YouTube' }}"><i class="fab fa-youtube fa-1x"></i></a>
+    </li>
+    {% endif %}
+    {% if site.social_links.pinterest %}
+    <li class="nav-item">
+        <a class="nav-link text-white" href="https://www.pinterest.com/{{ site.social_links.pinterest | cgi_escape | escape }}" title="{{ site.social_links.pinterest | escape }}"><i class="fab fa-pinterest fa-1x"></i></a>
+    </li>
+    {% endif %}
+    {% if site.social_links.facebook %}
+    <li class="nav-item">
+        <a class="nav-link text-white" href="https://www.facebook.com/{{ site.social_links.facebook | cgi_escape | escape }}" title="{{ site.social_links.facebook | escape }}"><i class="fab fa-facebook fa-1x"></i></a>
+    </li>
+    {% endif %}
+    {% if site.social_links.flickr %}
+    <li class="nav-item">
+        <a class="nav-link text-white" href="https://www.flickr.com/photos/{{ site.social_links.flickr | cgi_escape | escape }}" title="{{ site.social_links.flickr | escape }}"><i class="fab fa-flickr fa-1x"></i></a>
+    </li>
+    {% endif %}
+    {% if site.social_links.linkedin %}
+    <li class="nav-item">
+        <a class="nav-link text-white" href="https://www.linkedin.com/in/{{ site.social_links.linkedin | cgi_escape | escape }}" title="{{ site.social_links.linkedin | escape }}"><i class="fab fa-linkedin fa-1x"></i></a>
+    </li>
+    {% endif %}
+    {% if site.rss_feed_enable %}
+    <li class="nav-item">
+        <a class="nav-link text-white" href="/sitemap.xml"><i class="fas fa-rss fa-1x"></i></a>
+    </li>
+    {% endif %}
+</ul> 

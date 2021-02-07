@@ -1,27 +1,89 @@
 ---
-layout: default
+layout: default_light
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author | escape }}</span></span>
-      {%- endif -%}</p>
-  </header>
-
-  <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
+<div class="container pt-2">
+  
+  <div class="">
+    <h1 class="text-center mt-4 mb-4">{{ page.title }}</h1>
+    <!-- <p class="text-center text-muted">{{ page.excerpt }}</p> -->
+    <img src="{{ page.image }}" class="img-fluid rounded mx-auto d-block" style="max-height:36rem" alt="Thumbnail">
   </div>
 
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-  {%- endif -%}
+  <div class="row mt-4">
+    <div class="col-sm-3 align-self-center">
+      <div class="container">
+        {% if page.servings %}
+        <p class="m-1">
+          <span class="font-weight-bold">Servings:</span> <span class="pl-1">{{page.servings}}</span>
+        </p>
+        {% endif %}
+        
+        {% if page.time %}
+        <p class="m-1">
+          <span class="font-weight-bold">Time:</span> <span class="pl-1">{{page.time}}</span>
+        </p>
+        {% endif %}
 
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
-</article>
+        {% if page.difficulty %}
+        <p class="m-1">
+          <span class="font-weight-bold">Difficulty:</span> <span class="pl-1">{{page.difficulty | capitalize}}</span>
+        </p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div class="col-sm-9">
+      <p class="m-1">
+        <i class="fas fa-tags fa-2x mr-2" style="vertical-align: middle"></i>
+        {% for tag in page.tags %}
+        <button type="button" class="btn btn-light">{{ tag }}</button>
+        {% endfor %}
+      </p>
+    </div>
+  </div>
+  
+  <!-- Ingredients -->
+  <div class="row mt-5">
+    <div class="col-sm-4">
+      {% if page.ingredients %}
+      <h3>Ingredients</h3>
+      <div class="container">
+        <ul class="list-group list-group-flush">
+          {% for ingredient in page.ingredients %}
+          <li class="list-group-item" style="background-color:#eee">{{ingredient | capitalize}}</li>
+          {% endfor %}
+        </ul> 
+      </div>
+      {% endif %}
+    </div>
+    
+    <!-- Method -->
+    <div class="col-sm-8">
+      <h3>Method</h3>
+      <div class="post-content">
+        {{ content }}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Related posts -->
+{% assign related_posts = site.related_posts | sample: 3 %}
+{% if related_posts %}
+<div class="container mt-5">
+  <h2>You might also like</h2>
+  <section class="card-columns">
+  {% for post in related_posts %}
+    {% include post_card.html post=post %}
+    {% endfor %}
+  </section>
+</div>
+{% endif %}
+
+<div class="container">
+  {% if site.disqus_shortname %}
+  {% include disqus.html %}
+  {% endif %}
+</div>

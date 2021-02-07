@@ -1,0 +1,54 @@
+---
+layout: default_dark
+---
+<section class="row">
+{% for post in paginator.posts %}
+
+  <div class="col-md-4 pb-5">
+  {% include post_card.html post=post %}
+  </div>
+
+{% assign var = forloop.index | modulo: 3 %}
+{% if var == 0 %}
+</section>
+<section class="row">
+{% endif %}
+{% endfor %}
+</section>
+
+<!-- Pagination -->
+{% if paginator.total_pages > 1 %}
+<div class="container mt-5 mb-4">
+  <ul class="pagination justify-content-center">
+
+  <!-- Previous -->
+  {% if paginator.previous_page %}
+  <li class="page-item"><a class="page-link" href="{{paginator.previous_page_path}}">Previous</a></li>
+  {% else %}
+  <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+  {% endif %}
+
+  <!-- First -->
+  <!-- {% if paginator.page != 1 %}
+  <li class="page-item"><a class="page-link" href="/">1</a></li>
+  {% endif %} -->
+
+  <li class="page-item active"><a class="page-link" href="#">{{paginator.page}}</a></li>
+  <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+
+  <!-- last -->
+  <!-- {% if paginator.page != paginator.total_pages %}
+  <li class="page-item"><a class="page-link" href="/page{{paginator.total_pages}}">{{paginator.total_pages}}</a></li>
+  {% endif %} -->
+
+  <!-- Next  -->
+  {% if paginator.next_page %}
+  <li class="page-item"><a class="page-link" href="{{paginator.next_page_path}}">Next</a></li>
+  {% else %}
+  <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+  {% endif %}
+  
+
+  </ul> 
+</div>
+{% endif %}
