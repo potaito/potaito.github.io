@@ -86,3 +86,5 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-postfiles
+  - jekyll-seo-tag
+  - jekyll-target-blank
