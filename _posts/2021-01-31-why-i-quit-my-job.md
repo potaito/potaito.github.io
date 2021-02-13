@@ -5,7 +5,7 @@ date:   2021-01-31 16:00:00 +0100
 categories: career
 ---
 
-![Seeya!](/why-i-quit-my-job/pexels-oliver-sjöström-12236492.jpg)
+![Seeya!](/images/pexels-oliver-sjöström-12236492.jpg)
 _Photograph by [Oliver Sjöström](https://www.ollivves.com)_
 
 ## Everyone's dream job?

@@ -5,7 +5,7 @@ date:   2019-03-24 08:00:00 +0100
 categories: mqtt development
 ---
 
-![ESP8266 with DHT33 sensor]({{ site.url }}/testing-mqtt/eps8266_dht.jpg "ESP8266 DHT ")
+![ESP8266 with DHT33 sensor]({{ site.url }}/images/eps8266_dht.jpg "ESP8266 DHT ")
 *The ESP8266 microcontroller that would not connect to my MQTT broker*
 
 ## TL;DR

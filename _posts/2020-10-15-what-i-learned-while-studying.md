@@ -5,7 +5,7 @@ date:   2020-10-15 16:00:00 +0100
 categories: [personal]
 ---
 
-![Studying](/what-i-learned-while-studying/pexels-armin-rimoldi-5553037.jpg)
+![Studying](/images/pexels-armin-rimoldi-5553037.jpg)
 _Photograph by Armin Rimoldi_
 
 ### Good and bad habits
