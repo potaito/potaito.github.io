@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "What I learned while studying"
-date:   2020-10-15 16:00:00 +0100
+date:   2021-02-13 16:00:00 +0100
 categories: [personal]
 ---
 
