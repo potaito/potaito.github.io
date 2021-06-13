@@ -53,7 +53,7 @@ entrypoiny.sh:
 exec "$@"
 ```
 
-Now simply pass the host machine's uesr name and ID to the docker build command, and it will bake them into the docker container:
+Now simply pass the host machine's user name and ID to the docker build command, and it will bake them into the docker container:
 ```shell
 docker build . -f Dockerfile -t my-container \
             --build-arg USER=$USER \
