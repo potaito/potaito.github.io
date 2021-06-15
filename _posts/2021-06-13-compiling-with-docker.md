@@ -29,7 +29,7 @@ The docker recipe `Dockerfile`. It's important to name it exactly like that:
 ```dockerfile
 FROM ubuntu:20.04
 
-# Perform the system setup as root, in this case we use htop as an example
+# Perform the system setup as root and install the necessary dependencies
 RUN apt update
 RUN apt install -y clang
 
