@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to handle git when submodules changed"
-date:   2022-02-09 35:45:00 +0100
+date:   2022-02-09 15:45:00 +0100
 categories: [development]
 ---
 
