@@ -10,8 +10,8 @@ Or: "I don't care about the submodules. Just update the submodules and reset all
 ## TL;DR
 
 ```shell
-git submodule deinit --all
-git checkout <new-branch>
+git submodule deinit --all -f
+# git checkout <new-branch>
 git submodule init
 git submodule sync --recursive
 git submodule update --recursive
