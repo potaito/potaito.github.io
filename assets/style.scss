@@ -53,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: xx-large;
   a {
     color: inherit;
   }
@@ -265,7 +265,7 @@ p > img {
 //
 
 .wrapper-masthead {
-  margin-bottom: 25px;
+  margin-bottom: 0.5em;
 }
 
 .masthead {
@@ -361,7 +361,7 @@ nav {
 //
 
 .posts > .post {
-  padding-bottom: 2em;
+  padding-bottom: 1em;
   border-bottom: 1px solid $lightGray;
 }
 
@@ -399,6 +399,10 @@ nav {
     text-transform: uppercase;
     font-size: medium;
     font-weight: bold;
+  }
+
+  h1 {
+    margin: 0.2em 0 0.2em;
   }
 }
 
@@ -452,7 +456,7 @@ body:after {
   font-weight: bold;
   font-kerning: auto;
   font-feature-settings: "kern","liga","dlig","hlig","cswh";
-  line-height: 1.2;
+  // line-height: 1.2;
 }
 
 .page h1{

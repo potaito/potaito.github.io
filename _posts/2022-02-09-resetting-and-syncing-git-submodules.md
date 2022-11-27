@@ -24,25 +24,25 @@ This is just a short note for a particular nuisance when working with git and su
 Problems with submodules:
 
 - When submodules had their remote URLs changed, but the change was not been synced locally yet, git will fail to find newer commits:
-	```
-	$ git submodule update --init --recursive
+  ```
+  $ git submodule update --init --recursive
 
-	fatal: remote error: upload-pack: not our ref 9386b9f73522fefb2ccbe0ce1ccdc681f5f4a86f
-	fatal: the remote end hung up unexpectedly
-	Fetched in submodule path '<path-to-submodule>', but it did not contain 9386b9f73522fefb2ccbe0ce1ccdc681f5f4a86f. Direct fetching of that commit failed.
-	```
+  fatal: remote error: upload-pack: not our ref 9386b9f73522fefb2ccbe0ce1ccdc681f5f4a86f
+  fatal: the remote end hung up unexpectedly
+  Fetched in submodule path '<path-to-submodule>', but it did not contain 9386b9f73522fefb2ccbe0ce1ccdc681f5f4a86f. Direct fetching of that commit failed.
+  ```
 
 
 - Likewise when the paths to some submodules were modified or renamed, git will often make it impossible to move between commits with the following error:
 
-	```
-	$ git checkout <some-branch>
-	error: The following untracked working tree files would be overwritten by checkout:
-		<path-to-submodule/path-to-file1>
-		<path-to-submodule/path-to-file2>
-		<path-to-submodule/path-to-file3>
-		...
-	```
+  ```
+  $ git checkout <some-branch>
+  error: The following untracked working tree files would be overwritten by checkout:
+    <path-to-submodule/path-to-file1>
+    <path-to-submodule/path-to-file2>
+    <path-to-submodule/path-to-file3>
+    ...
+  ```
 
 ## The hammer method
 
