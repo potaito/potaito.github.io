@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Explorer shortcut not working in Visual Code"
+title:  "Explorer shortcut (CTRL+SHIFT+e) not working in Visual Code"
 date:   2022-05-28 13:20:00 +0100
 categories: [development]
 ---
