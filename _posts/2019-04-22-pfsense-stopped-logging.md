@@ -2,7 +2,7 @@
 layout: post
 title:  "My pfSense logs are all empty"
 date:   2019-04-22 16:00:00 +0100
-categories: pfsense
+categories: pfsense technical
 ---
 
 I don't know why, but my pfSense firewall simply stopped logging at some point. Possibly after an upgrade. All the system logs, service logs and firewall events that are usually stored in `/var/log` were not logged anymore. Even a factory reset did not clear things up. What did help though was to delete all the files:

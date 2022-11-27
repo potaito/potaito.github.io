@@ -2,7 +2,7 @@
 layout: post
 title:  "Compiling with docker"
 date:   2021-06-13 15:50:00 +0100
-categories: [development]
+categories: docker development technical
 ---
 
 Here's a quick note on how to use Docker containers for compiling. Why is this useful? Because it allows us to test the installation of the toolchain and external libraries on a virtually new machine, and it's possible to test the compilation with specific Operating Systems.

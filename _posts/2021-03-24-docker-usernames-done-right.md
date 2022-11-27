@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Docker usernames done right"
+date:   2021-03-24 16:00:00 +0100
+categories: docker development linux technical
+---
+
 This is another rather short note about a method I just discovered for managing the user permissions inside docker properly.
 
 The problem: When creating a new docker container, the default user is going to be root. This is not desirable for a few reasons, and some applications even flat out refuse to work when launched as root. It particulraly becomes annoying when using docker containers as a build system for compiling an application. The advantage in that lies in a deterministic build chain. The disadvantage is that we would build as root, and when mounting the build directory into docker, the resulting binaries would be owned by root, even on the host machine.

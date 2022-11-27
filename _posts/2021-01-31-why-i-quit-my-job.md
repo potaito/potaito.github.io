@@ -2,7 +2,7 @@
 layout: post
 title:  "Why I quit my well paying job"
 date:   2021-01-31 16:00:00 +0100
-categories: career
+categories: personal
 ---
 
 I had a decently paid job, was able to do whatever I wanted, no boss around to tell me what to do or not to do, complete and total freedom. If I wanted, I could have sit around and watched youtube videos all day. Of course I did not do that, I always kept going, but theoretically nobody would have noticed if I stopped for a few weeks.

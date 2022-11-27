@@ -2,7 +2,7 @@
 layout: post
 title:  "Arch Linux installation documentation"
 date:   2020-03-20 16:00:00 +0100
-categories: arch linux
+categories: arch linux technical
 ---
 
 My installation documentation for installing Arch Linux on a UEFI system with LUKS/LVM encryption setup.

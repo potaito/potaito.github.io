@@ -2,7 +2,7 @@
 layout: post
 title:  "Testing and troubleshooting MQTT"
 date:   2019-03-24 08:00:00 +0100
-categories: mqtt development
+categories: mqtt development linux technical
 excerpt: In home-automation, MQTT is a popular messaging system based on the principle of publishers and subscribers. Sometimes it is a bit annoying to debug though, especially when it's used for the first time with a new system. For example microcontrollers and a home automation hub based on OpenHAB as in my case.
 ---
 

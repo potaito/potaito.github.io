@@ -2,7 +2,7 @@
 layout: post
 title:  "Accessing private git repositories with jenkins agents"
 date:   2020-01-10 16:00:00 +0100
-categories: jenkins
+categories: jenkins technical
 ---
 
 The following is a quick tutorial on how to access private git repositories via SSH on Jenkins agents in an efficient way.

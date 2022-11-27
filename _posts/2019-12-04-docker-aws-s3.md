@@ -2,7 +2,7 @@
 layout: post
 title:  "Deploying to Amazon AWS S3 with jenkins and docker"
 date:   2019-12-04 13:00:00 +0100
-categories: jenkins
+categories: jenkins technical
 ---
 
 Docker is nice because it allows developers to create a deterministic virtual machine for specific uses suc has compiling code. Deterministic in the sense, that the software that has to be installed can be specified down to the exact versio nnumber. Read my other post [[docker-for-compiling]] for more details.

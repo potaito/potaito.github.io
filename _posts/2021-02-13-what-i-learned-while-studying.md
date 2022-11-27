@@ -2,7 +2,7 @@
 layout: post
 title:  "What I learned while studying"
 date:   2021-02-13 16:00:00 +0100
-categories: [personal]
+categories: personal
 excerpt: A reflection on what skills I learned during my studies at the university.
 ---
 

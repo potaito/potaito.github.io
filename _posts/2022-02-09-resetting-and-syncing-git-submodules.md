@@ -2,7 +2,7 @@
 layout: post
 title:  "Resetting and Syncing Git Submodules"
 date:   2022-02-09 15:45:00 +0100
-categories: [development]
+categories: git development
 ---
 
 Or: "I don't care about the submodules. Just update the submodules and reset all of them to master!"

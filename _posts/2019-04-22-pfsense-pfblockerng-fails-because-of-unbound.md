@@ -2,7 +2,7 @@
 layout: post
 title:  "pfBlockerNG DNSBL failing to load"
 date:   2019-04-22 17:00:00 +0100
-categories: pfsense pfblockerng
+categories: pfsense pfblockerng technical
 ---
 
 This post covers some trouble I had with pfBlockerNG not reloading the `unbound` DNS resolver properly. As it turns out, it was an issue with a config file, probably caused by an update.

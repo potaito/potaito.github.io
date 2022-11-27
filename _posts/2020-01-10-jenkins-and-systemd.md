@@ -2,7 +2,7 @@
 layout: post
 title:  "Autostart jenkins agent with systemd"
 date:   2020-01-10 16:00:00 +0100
-categories: pfsense
+categories: pfsense technical
 ---
 
 This article explains how to run the java jenkins agent as a systemd service.

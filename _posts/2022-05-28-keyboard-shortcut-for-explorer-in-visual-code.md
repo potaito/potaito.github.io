@@ -2,7 +2,7 @@
 layout: post
 title:  "Explorer shortcut not working in Visual Code"
 date:   2022-05-28 13:20:00 +0100
-categories: [development]
+categories: development linux
 excerpt: This was driving me mad for a while. On some systems the Explorer shortcut CTRL+SHIFT+e is not working properly. The shortcut is supposed to open the file Explorer in Visual Code's side bar and jump to the location of the file. When using the keyboard shortcut while the cursor is in a text field, it would not do anything and the subsequent keyboard input is bogged.
 ---
 
