@@ -1,6 +1,8 @@
 #
 # This file contains configuration flags to customize your site
 #
+lang: en-US # default lang
+timezone: Europe/Zurich
 
 # Name of your site (displayed in the header)
 name: Potaito
