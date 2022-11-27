@@ -10,7 +10,7 @@ excerpt: In home-automation, MQTT is a popular messaging system based on the pri
 *The ESP8266 microcontroller that would not connect to my MQTT broker*
 
 ## TL;DR
-```shell
+```bash
 # Install
 sudo apt-get install mosquitto mosquitto-client
 
@@ -26,7 +26,7 @@ In home-automation, MQTT is a popular messaging system based on the principle of
 
 As always, instead of jumping immediately to the final solution and trying to make it work, it is often easier to begin with incremental steps. In my case this meant first debugging the communication of the microcontorller, and then the central hub. For this purpose I used an Ubuntu machine and two packages, `mosquitto` and `mosquitto-clients`:
 
-```
+```bash
 sudo apt-get install mosquitto mosquitto-clients
 ```
 
@@ -47,13 +47,13 @@ tcp6   0   0   :::1883        :::*        LISTEN   1126/mosquitto
 
 Note that the broker is by default listening on port `1883`. Now subscribe to a test topic:
 
-```
+```bash
 mosquitto_sub -t sometopic
 ```
 
 and then in a new terminal start publishing messages:
 
-```
+```bash
 mosquitto_pub -t sometopic -m 'hello there'
 ```
 
@@ -62,7 +62,7 @@ The subscriber should now receive and print the message.
 ## Testing the production broker
 The MQTT broker that will ultimately be used is probably some headless raspberrypi or server. In order to test it, the same procedure as before can be used. Only this time we specify an IP address for the host running the MQTT broker:
 
-```shell
+```bash
 # Subscribe on the local machine
 # In this example the broker is on 192.168.1.10
 mosquitto_sub -t sometopic -h 192.168.1.10

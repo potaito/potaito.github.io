@@ -97,7 +97,7 @@ It took the following steps to resolve the problem:
 
 By default pfBlockerNG has easylists that block some of the most common trackers and malicious URLs. One of the lists loaded is this one: https://easylist-downloads.adblockplus.org/easyprivacy.txt. As a final test, we can form a DNS query for a domain that appears in this list and should thus be black-holed. 
 
-```shell
+```
 $ dig @192.168.1.1 google-analytics.com
 
 ; <<>> DiG 9.10.3-P4-Ubuntu <<>> @192.168.1.1 google-analytics.com

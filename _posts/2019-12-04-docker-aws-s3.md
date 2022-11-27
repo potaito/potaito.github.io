@@ -5,7 +5,7 @@ date:   2019-12-04 13:00:00 +0100
 categories: jenkins technical
 ---
 
-Docker is nice because it allows developers to create a deterministic virtual machine for specific uses suc has compiling code. Deterministic in the sense, that the software that has to be installed can be specified down to the exact versio nnumber. Read my other post [[docker-for-compiling]] for more details.
+Docker is nice because it allows developers to create a deterministic virtual machine for specific uses suc has compiling code. Deterministic in the sense, that the software that has to be installed can be specified down to the exact versio nnumber. Read my other post on [how to compile projects with docker]({{ site.url }}/compiling-with-docker) for more details.
 
 When using docker as part of Continuous Integration, one might want to upload the compiled binaries to AWS S3 for example. Granted there are now github actions that can perform this task almost effortlessly, but we can also create a docker image for this purpose.
 
