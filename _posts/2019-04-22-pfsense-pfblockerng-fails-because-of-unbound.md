@@ -5,9 +5,15 @@ date:   2019-04-22 17:00:00 +0100
 categories: pfsense pfblockerng
 ---
 
-*Running pfSense version 2.4.4 and pfBlockerNG v2.2.5_22.*
+This post covers some trouble I had with pfBlockerNG not reloading the `unbound` DNS resolver properly. As it turns out, it was an issue with a config file, probably caused by an update.
 
-I wanted to setup pfBlockerNG on my pfSense router, which consists of two parts: IP blocking and DNS "black-holing". The IP-based blocking worked fine out of the box. Its concept is fairly straight forward as it adds a firewall rule that drops packets to and from "bad" IP addresses. These addresses are found online in curated lists. What I had trouble with though was the DNS Blocker `DNSBL`, the other half of pfBlockerNG. In particular when I forced a reload of pfBlockerNG, it would fail to reload `unbound`, which is the DNS Resolver service on pfSense. `DNSBL` relies on `unbound` in the sense that it adds itself to `unbound` and then handles specific DNS request that are black-listed. The following is an excerpt of the pfBlockerNG log during the reload process:
+## Setup
+I wanted to setup pfBlockerNG on my pfSense router, which consists of two parts: IP blocking and DNS "black-holing". 
+1. The IP-based blocking worked fine out of the box. Its concept is fairly straight forward as it adds a firewall rule that drops packets to and from "bad" IP addresses. These addresses are found online in curated lists. 
+2. What I had trouble with though was the DNS Blocker `DNSBL`, the other half of pfBlockerNG. In particular when I forced a reload of pfBlockerNG, it would fail to reload `unbound`, which is the DNS Resolver service on pfSense. `DNSBL` relies on `unbound` in the sense that it adds itself to `unbound` and then handles specific DNS request that are black-listed. 
+
+## Analysis
+The following is an excerpt of the pfBlockerNG log during the reload process:
 
 ```
 ------------------------------------------------------------------------
@@ -45,6 +51,7 @@ drwxr-xr-x   2 unbound  unbound   512B Dec 12 13:42 conf.d
 -rw-r-----   1 unbound  unbound     0B Dec 10  2017 unbound_server.pem
 ```
 
+## Fixing the problem
 It took the following steps to resolve the problem:
 0. Stop the `unbound` service via GUI.
 1. Delete the empty files. In my case the key files `unbound_control.key` etc. were also empty, so these needed to be removed as well. Otherwise `unbound` would not start:
@@ -117,3 +124,5 @@ google-analytics.com.	60	IN	A	10.10.10.1
 As can be seen, `dig` returns the IP address `10.10.10.1` for this particular domain, which is not the correct address. Therefore any HTTP(S) request to this domain would would end up in the void, which is good. 
 
 A note about `dig`: With `dig @<ip>` it is possible to query a specific DNS server with a name resolution request. In this case the device running pfSense is what we want to test. Without the extra `@` argument, the local machine's (Ubuntu or whatever you are on) DNS proxy like `dnsmasq` might return a cached answer for the domain. Likewise a test with the `ping` command as suggested in some tutorials can give wrong results for the same reasons.
+
+*At time of writing I was running pfSense version 2.4.4 and pfBlockerNG v2.2.5_22.*

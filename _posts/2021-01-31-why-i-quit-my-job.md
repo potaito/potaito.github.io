@@ -5,13 +5,13 @@ date:   2021-01-31 16:00:00 +0100
 categories: career
 ---
 
-![Seeya!](/images/pexels-oliver-sjöström-12236492.jpg)
-_Photograph by [Oliver Sjöström](https://www.ollivves.com)_
-
-## Everyone's dream job?
 I had a decently paid job, was able to do whatever I wanted, no boss around to tell me what to do or not to do, complete and total freedom. If I wanted, I could have sit around and watched youtube videos all day. Of course I did not do that, I always kept going, but theoretically nobody would have noticed if I stopped for a few weeks.
 
 So why did I leave this "perfect" job?
+
+![Seeya!](/images/pexels-oliver-sjöström-12236492.jpg)
+_Photograph by [Oliver Sjöström](https://www.ollivves.com)_
+
 
 ## Deviation from my plans
 Before accepting this job, I was a lab assistant at the university. And because of my own insecurities, I have been contemplating whether to start a PhD or not for almost a year. My impression was, that in order to do a PhD, one would have to stand 100% behind it. How else would can someone surive 4-6 years of tight deadlines, often working until late at night and coming up with brilliant research ideas? That was at least my own definition of a PhD, and why I was reluctant to make the jump.

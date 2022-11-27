@@ -3,6 +3,7 @@ layout: post
 title:  "OpenVPN Setup on pfSense"
 date:   2019-04-06 09:00:00 +0100
 categories: pfsense openvpn
+excerpt: The following settings can be used as a basic configuration for a OpenVPN server running on pfSense
 ---
 
 The following settings can be used as a basic configuration for a OpenVPN server running on pfSense.

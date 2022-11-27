@@ -1,18 +1,19 @@
 ---
 layout: post
-title:  "Explorer shortcut (CTRL+SHIFT+e) not working in Visual Code"
+title:  "Explorer shortcut not working in Visual Code"
 date:   2022-05-28 13:20:00 +0100
 categories: [development]
+excerpt: This was driving me mad for a while. On some systems the Explorer shortcut CTRL+SHIFT+e is not working properly. The shortcut is supposed to open the file Explorer in Visual Code's side bar and jump to the location of the file. When using the keyboard shortcut while the cursor is in a text field, it would not do anything and the subsequent keyboard input is bogged.
 ---
 
-![Visual Code Logo](/images/Visual-Studio-Code-Crack-497510271.png "Visual Code")
+![Visual Code Logo]({{ site.baseurl }} /images/Visual-Studio-Code-Crack-497510271.png "Visual Code")
 
 
 This was driving me mad for a while. On some systems the Explorer shortcut `CTRL+SHIFT+e` is not working properly. The shortcut is supposed to open the file Explorer in Visual Code's side bar and jump to the location of the file. When using the keyboard shortcut while the cursor is in a text field, it would not do anything and the subsequent keyboard input is bogged.
 
 Turns out that this shortcut is being used to insert emojis in GTK3 applications. More detail in [this stackoverflow thread](https://stackoverflow.com/questions/52032340/ctrlshifte-inserts-special-characters-into-file-instead-of-showing-explorer-pa).
 
-## How to fix the Explorer Shortcut in Visual Code
+## How to fix the Explorer Shortcut
 The fix is simple. We remove the keyboard mapping in GTK for the emoji tool. For this matter the `gsettings` command can be used, once we know where the setting is hiding.
 
 The aforementioned stackoverflow noted, that it's a feature of the Intelligent Input Bus (IBus). See the always excellent [Arch Wiki](https://wiki.archlinux.org/title/IBus) for more details.

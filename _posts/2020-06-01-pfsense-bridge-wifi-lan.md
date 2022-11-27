@@ -3,6 +3,7 @@ layout: post
 title:  "How to bridge Wifi and LAN in pfSense"
 date:   2020-06-01 16:00:00 +0100
 categories: [pfSense]
+excerpt: The pfSense router that I built contains a WiFi card, besides the conventional LAN ports. The workflow in pfSense requires setting up these network interfaces as separate networks. This means that the networks will be on different subnets. But being on separate subnets breaks some applications, for example sending content from a phone to a smart TV or chromecast. These devices are usually discovered with broadcasts, and as such all devices need to be in the same subnet. This is why I bridged the LAN and WiFi network interfaces in pfSense, making them appear as a single virtual network
 ---
 
 

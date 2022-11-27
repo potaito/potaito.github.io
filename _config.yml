@@ -1,90 +1,103 @@
-# Site settings
-title: Potaito's shed
-description: > # this means to ignore newlines until "show_exerpts:"
-  Engineer, roboticist and technology enthusiast.
-lang: en-US # default lang
-timezone: Europe/Zurich
-# image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
-mode: dark # default theme "dark" | "light"
+#
+# This file contains configuration flags to customize your site
+#
 
-# Profile settings
-author:
-  name: Potaito
-  # bio:
-  # username: username # general username
-  # github: github_username # github username
-  # twitter: twitter_username # twitter username
-  # facebook: facebook_username # facebook username
-  # email: your-email@email.com # email adress
-  # avatar: /assets/img/avatar.jpg # change with your own avatar
+# Name of your site (displayed in the header)
+name: Potaito
 
-# URL settings
-url: "https://potaito.github.io" #
+# Name of the author
+author: Potaito
+
+# Short bio or description (displayed in the header)
+description: Engineer, roboticist and technology enthusiast.
+
+# URL of your avatar or profile pic (you could use your GitHub profile pic)
+avatar: /images/reverie.png
+
+#
+# Flags below are optional
+#
+
+# Includes an icon in the footer for each username you enter
+footer-links:
+  dribbble:
+  email:
+  facebook:
+  flickr:
+  github: potaito
+  instagram:
+  linkedin: 
+  pinterest:
+  rss:
+  twitter:
+  stackoverflow: 
+  youtube: # channel/<your_long_string> or user/<user-name>
+  googleplus: # anything in your profile username that comes after plus.google.com/
+  playconsole:
+  mastodon: # <your-mastodon-instance>/@<your-user-name> eg. fosstodon.org/@username
+
+# Enter your Disqus shortname (not your username) to enable commenting on posts
+# You can find your shortname on the Settings page of your Disqus account
+disqus: 
+
+# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
+google_analytics:
+
+# For newer "GA4" analytics, use the following instead of the "UA" entry above
+#google_analytics_ga4: G-GABC1DEFG
+
+# Your website URL (e.g. http://amitmerchant1990.github.io or http://www.amitmerchant.com)
+# Used for Sitemap.xml and your RSS feed
+url: https://potaito.github.io
+# enforce_ssl: https://www.amitmerchant.com/reverie
+
+# If you're hosting your site at a Project repository on GitHub pages
+# (http://yourusername.github.io/repository-name)
+# and NOT your User repository (http://yourusername.github.io)
+# then add in the baseurl here, like this: "/repository-name"
 baseurl:
+
+#
+# !! You don't need to change any of the configuration flags below !!
+#
+
 permalink: /:title/
-google_analytics: # leave it blank if not wish
-fb_appid:
 
-# Collection setting
-collections:
-  posts:
-    output: true
+# The release of Jekyll Now that you're using
+version: v1.2.0
 
-# Markdown settings
-markdown: kramdown
-highlighter: rouge
+# Jekyll 3 now only supports Kramdown for Markdown
 kramdown:
+  # Use GitHub flavored markdown, including triple backtick fenced code blocks
+  input: GFM
+  # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
   syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    # Use existing pygments syntax highlighting css
+    css_class: 'highlight'
 
-# Default front matter
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: post
-      comments: false
-
-# Jekyll Compose default front matter
-jekyll_compose:
-  post_default_front_matter:
-    modified:
-    tags: []
-    description:
-  draft_default_front_matter:
-    modified:
-    tags: []
-    description:
-
-# Homepage limit posts
-number_of_posts: 15
-
-# Build settings
-# theme: klise
+# Set the Sass partials directory, as we're using @imports
 sass:
-  style: compressed
+  style: :expanded # You might prefer to minify using :compressed
 
-include:
-  - _redirects
-  - .htaccess
+# Use the following plug-ins
+plugins:
+  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+  - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-target-blank
 
+include: ['_pages']
+
+paginate: 6
+paginate_path: /page:num/
+
+# Exclude these files from your production _site
 exclude:
-  - CNAME
   - Gemfile
   - Gemfile.lock
   - LICENSE
-  - CHANGELOG.md
   - README.md
-  - node_modules
-  - CODE_OF_CONDUCT.md
-  - CONTRIBUTING.md
-  - lighthouse.png
-  - klise-*.gem
-  - klise.gemspec
+  - CNAME
 
-# Plugins
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-postfiles
-  - jekyll-seo-tag
-  - jekyll-target-blank

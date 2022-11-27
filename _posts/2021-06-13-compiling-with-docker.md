@@ -5,11 +5,12 @@ date:   2021-06-13 15:50:00 +0100
 categories: [development]
 ---
 
+Here's a quick note on how to use Docker containers for compiling. Why is this useful? Because it allows us to test the installation of the toolchain and external libraries on a virtually new machine, and it's possible to test the compilation with specific Operating Systems.
+
 ![Docker containers are boxes for your code!](/images/pexels-photo-6505027.jpeg)
 
 _Photograph by [Ryanniel Masucol](https://www.pexels.com/@ryanniel-masucol-1503495)_
 
-Here's a quick note on how to use Docker containers for compiling. Why is this useful? Because it allows us to test the installation of the toolchain and external libraries on a virtually new machine, and it's possible to test the compilation with specific Operating Systems.
 
 In this example a hello-world C++ program is compiled and executed in an Ubuntu 20.04 Docker container. In a first step install the docker engine as described in [Docker's official documentation](https://docs.docker.com/engine/install/).
 

@@ -5,8 +5,6 @@ date:   2019-04-22 16:00:00 +0100
 categories: pfsense
 ---
 
-*Running pfSense version 2.4.4.*
-
 I don't know why, but my pfSense firewall simply stopped logging at some point. Possibly after an upgrade. All the system logs, service logs and firewall events that are usually stored in `/var/log` were not logged anymore. Even a factory reset did not clear things up. What did help though was to delete all the files:
 
 ```shell
@@ -48,3 +46,5 @@ drwxr-xr-x   3 root  wheel      512 Apr 22 16:45 snort
 By the way: the log-size is static as the logs are stored in form of a ring-buffer. Hence why they all have the same file size. 
 
 What was wrong? I have no idea. The file permissions are all the same as they were before I manually deleted the log files. I even tried switching to a RAM disk for the logs, but that also did not sort out the problem. In any event, now the logs are working again!
+
+*At time of writing I was running pfSense version 2.4.4.*
