@@ -1,22 +1,23 @@
 ---
 layout: post
-title:  "Compiling with docker"
+title:  "Compiling Software with Docker"
 date:   2021-06-13 15:50:00 +0100
 categories: docker development technical
 ---
 
-Here's a quick note on how to use Docker containers for compiling. Why is this useful? Because it allows us to test the installation of the toolchain and external libraries on a virtually new machine, and it's possible to test the compilation with specific Operating Systems.
+Here's a quick note on how to use Docker containers for compiling Software. Why is this useful? First, because it allows you to test the installation of the build environment, and it's possible to test the compilation with specific Operating Systems supported by Docker. Second, because it's sometimes easier to maintain a build environment which does not depend on system dependencies of your actual machine.
 
 ![Docker containers are boxes for your code!](/images/pexels-photo-6505027.jpeg)
 
 _Photograph by [Ryanniel Masucol](https://www.pexels.com/@ryanniel-masucol-1503495)_
 
 
-In this example a hello-world C++ program is compiled and executed in an Ubuntu 20.04 Docker container. In a first step install the docker engine as described in [Docker's official documentation](https://docs.docker.com/engine/install/).
+In this example we are going to compile a simple hello-world C++ program and execute it in an Ubuntu 20.04 Docker container. In a first step install the docker engine as described in [Docker's official documentation](https://docs.docker.com/engine/install/).
 
 Then this example will require two files. The first one containes the C++ source code, which in this case is a very simple hello-world program. The second file is the build recipe for the docker container, which installs the dependencies that are required to compile our executable. For the sake of simplicity, create both files in the same directory.
 
 C++ source code `hello.cpp`:
+
 ```c++
 #include <iostream>
 
@@ -27,6 +28,7 @@ int main() {
 ```
 
 The docker recipe `Dockerfile`. It's important to name it exactly like that:
+
 ```dockerfile
 FROM ubuntu:20.04
 
