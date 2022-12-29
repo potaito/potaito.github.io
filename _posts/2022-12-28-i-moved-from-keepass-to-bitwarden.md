@@ -41,7 +41,7 @@ I'm paranoid, no doubt. And I try to maintain my privacy the best I can. At some
 - Some bad guy wants to steal my password
 
 ## Conclusion
-I realized that my laziness was starting to become a problem. The way I managed my passwords with an offline password manager was too cumbersome. So much in fact, that I started taking short cuts by re-using old passwords. Eventually I would come back and change them (yeah, right!), but maybe not always (actually, never).
+I realized that my laziness was starting to become a problem. The way I managed my passwords with an offline password manager was too cumbersome. So much in fact, that I started taking shortcuts by re-using old passwords. Eventually I would come back and change them (yeah, right!), but maybe not always (actually, never).
 
 After accepting these facts, I also reconsidered online password managers. In fact, I reconsidered so much, that I started using one. Now I have most passwords in one place, they are in perfect sync accross all devices, and a person of trust has access to a select few passwords in case something happens. Since we are both using Bitwarden, this was fairly easy to set up. We just created our own private organization with a few shared passwords in it.
 
